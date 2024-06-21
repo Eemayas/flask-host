@@ -1,9 +1,6 @@
 from flask import Flask, request, jsonify
 from Analysis.singleComment import single_comment_analysis
 from Analysis.RNN import get_Comment_Analysis_RNN, get_Comment_Analysis_pagination_RNN
-from Analysis.roberta import get_Comment_Analysis_Rob, get_Comment_Analysis_pagination_Rob
-from Analysis.GRU import get_Comment_Analysis_GRU,  get_Comment_Analysis_pagination_part_2_GRU
-from Analysis.LSTM import get_Comment_Analysis_LSTM, get_Comment_Analysis_pagination_part_2_LSTM
 from getComments import get_Comment_try
 from flask_cors import CORS
 from test import data
@@ -52,34 +49,14 @@ def get_comments_Analysis():
     model = request.args.get('model')
     pageNumber = request.args.get('pageNumber')
     print(model)
-    # return get_Comment_Analysis_pagination_LSTM(pageNumber)
-    if (model == "LSTM"):
-        return get_Comment_Analysis_Rob()
-        # return get_Comment_Analysis_LSTM()
-    if (model == "RNN"):
-        # return get_Comment_Analysis_Rob()
-        return get_Comment_Analysis_RNN()
-    if (model == "Roberta"):
-        return get_Comment_Analysis_Rob()
-    else:
-        return get_Comment_Analysis_RNN()
-        # return get_Comment_Analysis_GRU()
+    return get_Comment_Analysis_RNN()
+    # return get_Comment_Analysis_GRU()
 
 
 @app.route('/get_comments_analysis_pagination', methods=['GET'])
 def get_comments_Analysis_pagination():
     pageNumber = request.args.get('pageNumber')
-    if (model == "LSTM"):
-        return get_Comment_Analysis_pagination_Rob(pageNumber)
-        # return get_Comment_Analysis_pagination_part_2_LSTM(pageNumber)
-    if (model == "RNN"):
-        # return get_Comment_Analysis_pagination_Rob(pageNumber)
-        return get_Comment_Analysis_pagination_RNN(pageNumber)
-    if (model == "Roberta"):
-        return get_Comment_Analysis_pagination_Rob(pageNumber)
-    else:
-        return get_Comment_Analysis_pagination_RNN(pageNumber)
-        # return get_Comment_Analysis_pagination_part_2_GRU(pageNumber)
+    return get_Comment_Analysis_pagination_RNN(pageNumber)
 
 
 @app.route('/predict/text', methods=['GET'])
@@ -87,7 +64,7 @@ def predict_endpoint():
     return single_comment_analysis()
 
 
-@app.route('/')
+@app.route('/test 1')
 def home_endpoint():
     return "Welcome"
 
