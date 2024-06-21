@@ -11,3 +11,6 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
+
+LSTM_sentimentmodel.h5
+**/GRU_sentimentmodel.h5
