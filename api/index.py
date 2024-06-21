@@ -25,43 +25,43 @@ CORS(app)
 model = "LSTM"
 
 
-@app.route("/test", methods=['GET'])
-def test_endpoint():
-    youtubeLink = request.args.get('youtubeLink')
-    comment = request.args.get('comment')
-    model = request.args.get('model')
-    pageNumber = request.args.get('pageNumber')
-    return jsonify({'youtubeLink': youtubeLink,
-                    "comment": comment,
-                    "model": model,
-                    "pageNumber": pageNumber,
-                    "data": data})
+# @app.route("/test", methods=['GET'])
+# def test_endpoint():
+#     youtubeLink = request.args.get('youtubeLink')
+#     comment = request.args.get('comment')
+#     model = request.args.get('model')
+#     pageNumber = request.args.get('pageNumber')
+#     return jsonify({'youtubeLink': youtubeLink,
+#                     "comment": comment,
+#                     "model": model,
+#                     "pageNumber": pageNumber,
+#                     "data": data})
 
 
-@app.route('/get_comments', methods=['GET'])
-def get_comments():
-    return get_Comment_try()
+# @app.route('/get_comments', methods=['GET'])
+# def get_comments():
+#     return get_Comment_try()
 
 
-@app.route('/get_comments_analysis', methods=['GET'])
-def get_comments_Analysis():
-    global model
-    model = request.args.get('model')
-    pageNumber = request.args.get('pageNumber')
-    print(model)
-    return get_Comment_Analysis_RNN()
-    # return get_Comment_Analysis_GRU()
+# @app.route('/get_comments_analysis', methods=['GET'])
+# def get_comments_Analysis():
+#     global model
+#     model = request.args.get('model')
+#     pageNumber = request.args.get('pageNumber')
+#     print(model)
+#     return get_Comment_Analysis_RNN()
+#     # return get_Comment_Analysis_GRU()
 
 
-@app.route('/get_comments_analysis_pagination', methods=['GET'])
-def get_comments_Analysis_pagination():
-    pageNumber = request.args.get('pageNumber')
-    return get_Comment_Analysis_pagination_RNN(pageNumber)
+# @app.route('/get_comments_analysis_pagination', methods=['GET'])
+# def get_comments_Analysis_pagination():
+#     pageNumber = request.args.get('pageNumber')
+#     return get_Comment_Analysis_pagination_RNN(pageNumber)
 
 
-@app.route('/predict/text', methods=['GET'])
-def predict_endpoint():
-    return single_comment_analysis()
+# @app.route('/predict/text', methods=['GET'])
+# def predict_endpoint():
+#     return single_comment_analysis()
 
 
 @app.route('/test 1')
